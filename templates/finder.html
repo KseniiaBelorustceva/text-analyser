@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wordcount</title>
+    <title>Keywords</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style>
@@ -16,10 +16,11 @@
         <div class="col-sm-5 col-sm-offset-1">
           <h1>Finder</h1>
           <br>
-          <form role="form" method="POST" action="/">
+          <form role="form" method="POST" action="/ui">
             <div class="form-group">
-              <input type="text" name="sample" class="form-control" id="url-box" placeholder="Enter URL..."
+              <textarea name="sample" class="form-control" rows="10" placeholder="Enter text to analyse..."
                      style="height: 200px; max-width: 500px;">
+              </textarea>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
@@ -30,15 +31,19 @@
           <br>
         </div>
         <div class="col-sm-5 col-sm-offset-1">
+            <h2>Sample text</h2>
+            <br>
+            <div id="sample">
+                {{sample}}
+            </div>
+
+        </div>
+        <div class="col-sm-5 col-sm-offset-1">
           {% if results %}
-            <h2>Products</h2>
+            <h2>Keywords</h2>
             <br>
             <div id="results">
-                {% for result in results%}
-                  <p>
-                    {{result}}
-                  </p>
-                {% endfor %}
+                {{results}}
             </div>
           {% endif %}
         </div>
